@@ -137,15 +137,15 @@ class BlacklistViewModel @Inject constructor(
         packageName
     }
 
-    private fun isFiltered(packageInfo: PackageInfo): Boolean = when {
-        !isExtendedUpdateEnabled && !packageInfo.applicationInfo!!.enabled -> true
+    fun isFiltered(packageInfo: PackageInfo?): Boolean = when {
+        !isExtendedUpdateEnabled && !packageInfo?.applicationInfo!!.enabled -> true
 
         isAuroraOnlyFilterEnabled -> !CertUtil.isAuroraStoreApp(
             context,
-            packageInfo.packageName
+            packageInfo?.packageName
         )
 
-        isFDroidFilterEnabled -> CertUtil.isFDroidApp(context, packageInfo.packageName)
+        isFDroidFilterEnabled -> CertUtil.isFDroidApp(context, packageInfo?.packageName)
 
         else -> false
     }
