@@ -63,7 +63,6 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.itemKey
 import com.aurora.extensions.emptyPagingItems
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.gplayapi.data.models.App
@@ -78,6 +77,7 @@ import com.aurora.store.compose.ui.details.AppDetailsScreen
 import com.aurora.store.data.model.SearchFilter
 import com.aurora.store.viewmodel.search.SearchViewModel
 import kotlin.random.Random
+import kotlin.uuid.Uuid
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -257,7 +257,7 @@ private fun ScreenContent(
                             LazyColumn {
                                 items(
                                     count = results.itemCount,
-                                    key = results.itemKey { it.id }
+                                    key = { Uuid.random().toString() }
                                 ) { index ->
                                     results[index]?.let { app ->
                                         LargeAppListItem(
