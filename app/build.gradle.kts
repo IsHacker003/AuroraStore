@@ -52,15 +52,15 @@ kotlin {
 
 configure<ApplicationExtension> {
     namespace = "com.aurora.store"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.aurora.store"
         minSdk = 23
         targetSdk = 36
 
-        versionCode = 73
-        versionName = "4.8.1"
+        versionCode = 74
+        versionName = "4.8.2"
 
         testInstrumentationRunner = "com.aurora.store.HiltInstrumentationTestRunner"
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
